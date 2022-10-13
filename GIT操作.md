@@ -1,4 +1,4 @@
-# GIT 操作：
+# GIT 操作
 
 | 命令                                | **说明**                          |
 | --------------------------------- | ------------------------------- |
@@ -6,6 +6,7 @@
 | git config --global user.email 邮箱 | 设置用户签名                          |
 | git init                          | 初始化本地库                          |
 | git status                        | 查看本地库                           |
+| git config -list                  | 查看git配置信息                       |
 | git add 文件名                       | 添加到暂存区                          |
 | git commit -m "日志信息" 文件名          | 提交到本地库                          |
 | git reflog                        | 查看历史记录                          |
@@ -23,39 +24,80 @@
 | ssh-keygen -t rsa -C liyong0610   | 创建公钥(mac 保存在： ～/.ssh/id_rsa.pub |
 |                                   |                                 |
 
-- 设置用户签名
+## 1. git安装
+
+### 1.1 Homebrew
 
 ```shell
-git config --global user.name 用户名
+Install [homebrew](https://brew.sh/) if you don't already have it, then:  
+`$ brew install git`
+
+if not install homebrew,then input below command to install homebrew:
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+```
+
+### 1.2 MacPorts
+
+```shell
+Install [MacPorts](https://www.macports.org) if you don't already have it, then:  
+`$ sudo port install git`
+```
+
+### 1.3 Xcode
+
+```shell
+Apple ships a binary package of Git with [Xcode](https://developer.apple.com/xcode/).
+```
+
+
+
+## 2. 配置用户名和邮箱.
+
+```shell
+git config --global user.name 用户名 (用于本地库记录版本信息)
+
 git config --global user.email 邮箱
+
 ```
 
-- 初始化本地库
+## 3. 创建和上传ssh公钥
+
+### 3.1创建公钥
 
 ```shell
-git init
+ssh-keygen -t rsa -C liyong0610  ----一般保存在～/.ssh/id_rsa.pub
 ```
 
-- 查看本地库
+### 3.2 上传公钥到github
+
+## 4. 初始化本地库
 
 ```shell
-git status
+先创建一个作为本地库的文件夹，然后在该目录
+git init  
 ```
 
-- 添加到暂存区
+## 5. 连接远程库
 
 ```shell
-git add 文件名
+创建远程库别名：
+git remote add 别名 远程库地址
 ```
 
-- 提交到本地库
+## 6 . 本地库操作
 
 ```shell
-git commit -m "日志信息" 文件名
+git add 文件名  ---添加文件到暂存区
+git commit -m "日志信息" 文件名。----提交到本地库
+git reflog  --- 查看历史版本记录，可查看各版本的版本号
+git reset --hard 版本号   --- 版本穿梭
+git rm --cache 文件名  --- 删除暂存区的文件
+git status  ----- 查看本地库的信息
+
 ```
 
-- 查看历史记录
 
-```shell
-git reflog
-```
+
+- 
